@@ -14,12 +14,9 @@ import com.ndhao.repository.TestRepository;
 public class TestService {
 	
 	@Autowired TestRepository testRepository;
-	@Autowired TestMapper testMapper;
 
 	public void test(TestDto test) {
-		System.out.println("~~~~~~~~~ "+test.getName());
-		Test tests = testMapper.toEntity(test);
-		System.out.println("-------------- "+tests.getName());
+		Test tests = TestMapper.INSTANCE.toEntity(test);
 		testRepository.save(tests);
 	}
 }
